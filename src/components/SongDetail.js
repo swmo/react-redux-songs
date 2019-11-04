@@ -3,20 +3,28 @@ import { connect } from 'react-redux';
 
 const SongDetail = (props) => {
 
-    function renderSong(selectedSong){
-        if(selectedSong !== null) {
-            return <div>{selectedSong.title}</div>
+    function renderSong(song){
+        if(song !== null) {
+            return (
+                <div>
+                    <h3>Details for:</h3>
+                    <p>
+                    Title: {song.title}  <br/>
+                    Duration: {song.duration}
+                    </p>
+                    
+                </div>)
         }
-        return null;
+        return <div>Please select a song</div>;
     }
-    
-    return <div className="ui segment">{renderSong(props.selectedSong)}</div>
+
+    return <div className="ui segment">{renderSong(props.song)}</div>
 }
 
 // Convention:
 const mapStateToProps = (state) => {
     return {
-        selectedSong: state.selectedSong
+        song: state.selectedSong
     };
 };
 
